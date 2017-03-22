@@ -7,8 +7,9 @@
 
 #### 添加商品分类
 
-
-post /category
+```
+GET /cat
+```
 
 接收数据
 
