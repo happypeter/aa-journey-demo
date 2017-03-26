@@ -13,3 +13,14 @@ exports.add = function (req, res) {
     })
   })
 }
+
+
+exports.list = function (req, res) {
+  Cat.find({},'name',function (err, cats) {
+    if (err) return res.status(500).json({err, msg: '获取分类失败，请重试'});
+    res.json({
+      msg: '获取分类成功',
+      cats
+    })
+  })
+}
