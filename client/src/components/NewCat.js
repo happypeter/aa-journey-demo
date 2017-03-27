@@ -20,6 +20,23 @@ class NewCat extends React.Component {
       })
     })
   }
+  _updateCatList(){
+    axios.get(`${config.host}/cats`)
+      .then((res)=>this.setState({cats:res.data.cats}))
+      .catch(err=>console.log(err))
+  }
+  _handleSubmit(e) {
+    e.preventDefault();
+    let catName = this.refs.catName.value;
+    console.log('_handleSubmit', catName);
+    this.refs.catName.value = '';
+    let data = {name: catName};
+    axios.post(`${config.host}/cat`, data)
+         .then( (res) => {
+            console.log(res);
+            this._updateCatList(); // 为了拿到每个分类的 _id ，只能从后台重新取一次了
+         })
+  }
   render(){
     let catList = this.state.cats.map((item, i) => {
       return(
@@ -29,7 +46,13 @@ class NewCat extends React.Component {
     })
     return(
       <div>
-        {catList}
+        <ul>
+          {catList}
+        </ul>
+        <form onSubmit={this._handleSubmit.bind(this)}>
+          <input ref='catName' type="text" />
+          <input type='submit' />
+        </form>
       </div>
     )
   }
