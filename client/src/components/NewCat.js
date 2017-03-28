@@ -37,11 +37,21 @@ class NewCat extends React.Component {
             this._updateCatList(); // 为了拿到每个分类的 _id ，只能从后台重新取一次了
          })
   }
+   _handleDelete(id){
+     console.log('_handleDelete', id);
+     let cats = this.state.cats;
+     cats = cats.filter(value => value._id != id );
+     this.setState({cats});
+     axios.delete(`${config.host}/cat?id=${id}`).then(res => {
+       console.log(res);
+     });
+   }
   render(){
     let catList = this.state.cats.map((item, i) => {
       return(
         <li key={i}>
           {item.name} -- {item._id}
+          <span onClick={this._handleDelete.bind(this, item._id)}> 删除 </span>
         </li>)
     })
     return(
