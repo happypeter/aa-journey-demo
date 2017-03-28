@@ -24,3 +24,19 @@ exports.list = function (req, res) {
     })
   })
 }
+
+// del?id=id
+exports.del = function (req,res) {
+  // console.log(req.query);
+  var id = req.query.id;
+  if (id) {
+    Cat.remove({_id: id}, function (err,category) {
+      if (err) return res.status(400).json({msg:'删除分类失败，请重试'});
+      res.json({
+        msg: '删除成功'
+      })
+    })
+  }else {
+    res.status(400).json({msg:'请求失败'})
+  }
+}
