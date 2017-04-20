@@ -1,6 +1,6 @@
 import React from 'react';
-import axios from 'axios';
-import config from '../config';
+import { signin } from '../redux/actions/accountActions';
+import { connect } from 'react-redux';
 
 class SignIn extends React.Component {
   constructor() {
@@ -16,12 +16,8 @@ class SignIn extends React.Component {
                 password: this.refs.password.value
             };
     console.log(_user);
-    axios.post(`${config.host}/user/signin`, _user)
-    .then((res) => {
-      console.log(res)
-      this.context.router.push(`/`);
-    })
-    .catch((err) => console.log(err))
+    this.props.signin(_user);
+    this.context.router.push(`/`);
   }
   render(){
     return (
@@ -49,4 +45,6 @@ SignIn.contextTypes = {
   router: React.PropTypes.object.isRequired
 }
 
-export default SignIn;
+const mapStateToProps = () => ({});
+
+export default connect(mapStateToProps, { signin } )(SignIn);;
