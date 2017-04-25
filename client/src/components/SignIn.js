@@ -1,6 +1,7 @@
 import React from 'react';
 import { signin } from '../redux/actions/accountActions';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 
 class SignIn extends React.Component {
   constructor() {
@@ -17,7 +18,7 @@ class SignIn extends React.Component {
             };
     console.log(_user);
     this.props.signin(_user);
-    this.context.router.push(`/`);
+    browserHistory.push(`/`);
   }
   render(){
     return (
@@ -39,10 +40,6 @@ class SignIn extends React.Component {
         </div>
     )
   }
-}
-
-SignIn.contextTypes = {
-  router: React.PropTypes.object.isRequired
 }
 
 const mapStateToProps = () => ({});
