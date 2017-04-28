@@ -2,9 +2,13 @@ import React from 'react';
 import { Link } from 'react-router';
 import store from '../redux/store';
 import { connect } from 'react-redux';
+import { fetchUser } from '../redux/actions/accountActions';
 
 
 class Header extends React.Component {
+  componentWillMount(){
+    this.props.fetchUser();
+  }
   render(){
     return(
       <div>
@@ -25,4 +29,4 @@ const mapStateToProps = (state) => ({
   currentUser: state.account.currentUser
 });
 
-export default connect(mapStateToProps)(Header);;
+export default connect(mapStateToProps, {fetchUser})(Header);;

@@ -12,3 +12,15 @@ export function signin(user) {
     .catch((err) => console.log(err))
   }
 }
+
+export function fetchUser() {
+  return dispatch => {
+    let userId = localStorage.getItem("userId");
+    if (userId) {
+      axios.get(`${config.host}/user/${userId}`)
+      .then((res) => {
+        dispatch({type: 'LOAD_USER', user: res.data.user.username});
+      }).catch((err) => console.log(err));
+    }
+  }
+}
