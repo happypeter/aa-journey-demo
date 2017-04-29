@@ -24,3 +24,10 @@ export function fetchUser() {
     }
   }
 }
+
+export function logout(){
+  return dispatch => {
+    localStorage.removeItem('userId');
+    dispatch({type: 'LOG_OUT'});
+  }
+}
