@@ -1,12 +1,13 @@
 import React from 'react';
 import Header from './Header';
+import '../css/home.css';
 
 
 class Home extends React.Component {
   render(){
     return(
-      <div>
-        Home
+      <div className='home'>
+        <h1 className="page-title"> 所有课程 </h1>
       </div>
     )
   }
