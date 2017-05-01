@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header';
 import axios from 'axios';
 import config from '../config';
-import { fetchCats } from '../redux/actions/catActions';
+import { fetchCats, createCat } from '../redux/actions/catActions';
 import { connect } from 'react-redux';
 
 
@@ -11,22 +11,13 @@ class NewCat extends React.Component {
   componentWillMount(){
     this.props.fetchCats();
   }
-  _updateCatList(){
-    axios.get(`${config.host}/cats`)
-      .then((res)=>this.setState({cats:res.data.cats}))
-      .catch(err=>console.log(err))
-  }
+
   _handleSubmit(e) {
     e.preventDefault();
     let catName = this.refs.catName.value;
-    console.log('_handleSubmit', catName);
+    this.props.createCat(catName);
     this.refs.catName.value = '';
-    let data = {name: catName};
-    axios.post(`${config.host}/cat`, data)
-         .then( (res) => {
-            console.log(res);
-            this._updateCatList(); // 为了拿到每个分类的 _id ，只能从后台重新取一次了
-         })
+
   }
    _handleDelete(id){
      console.log('_handleDelete', id);
@@ -63,4 +54,4 @@ const mapStateToProps = (state) => ({
   cats: state.cats
 });
 
-export default connect(mapStateToProps, {fetchCats})(NewCat);
+export default connect(mapStateToProps, {fetchCats, createCat})(NewCat);
