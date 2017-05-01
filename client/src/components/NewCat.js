@@ -4,6 +4,7 @@ import axios from 'axios';
 import config from '../config';
 import { fetchCats, createCat, removeCat } from '../redux/actions/catActions';
 import { connect } from 'react-redux';
+import '../css/new-cat.css';
 
 
 class NewCat extends React.Component {
@@ -26,19 +27,22 @@ class NewCat extends React.Component {
     let catList = this.props.cats.map((item, i) => {
       return(
         <li key={i}>
-          {item.name} -- {item._id}
-          <span onClick={this._handleDelete.bind(this, item._id)}> 删除 </span>
+          {item.name}
+          <span onClick={this._handleDelete.bind(this, item._id)}>x</span>
         </li>)
     })
     return(
-      <div>
-        <ul>
-          {catList.length == 0 ? '暂无分类': catList}
-        </ul>
-        <form onSubmit={this._handleSubmit.bind(this)}>
-          <input ref='catName' type="text" />
-          <input type='submit' />
-        </form>
+      <div className="new-cat">
+        <h1 className="title-dark-bg">新建分类</h1>
+        <div className="container">
+          <ul className="cat-list">
+            { catList }
+          </ul>
+          <form onSubmit={this._handleSubmit.bind(this)}>
+            <input ref='catName' type="text" />
+            <input className="submit" type='submit' value="创建分类"/>
+          </form>
+        </div>
       </div>
     )
   }
