@@ -18,3 +18,11 @@ export function createCat(name) {
          })
   }
 }
+export function removeCat(id) {
+  return dispatch => {
+    axios.delete(`${config.host}/cat?id=${id}`).then(res => {
+      console.log(res);
+      dispatch({type: 'DEL_CAT', id})
+    })
+  }
+}

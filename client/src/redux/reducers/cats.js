@@ -4,6 +4,8 @@ function cats(state = [], action) {
       return action.cats;
     case 'ADD_CAT':
       return [...state, {_id: action._id, name: action.name}];
+    case 'DEL_CAT':
+      return state.filter(value => value._id != action.id );
     default:
       return state;
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header';
 import axios from 'axios';
 import config from '../config';
-import { fetchCats, createCat } from '../redux/actions/catActions';
+import { fetchCats, createCat, removeCat } from '../redux/actions/catActions';
 import { connect } from 'react-redux';
 
 
@@ -20,13 +20,7 @@ class NewCat extends React.Component {
 
   }
    _handleDelete(id){
-     console.log('_handleDelete', id);
-     let cats = this.state.cats;
-     cats = cats.filter(value => value._id != id );
-     this.setState({cats});
-     axios.delete(`${config.host}/cat?id=${id}`).then(res => {
-       console.log(res);
-     });
+     this.props.removeCat(id);
    }
   render(){
     let catList = this.props.cats.map((item, i) => {
@@ -54,4 +48,4 @@ const mapStateToProps = (state) => ({
   cats: state.cats
 });
 
-export default connect(mapStateToProps, {fetchCats, createCat})(NewCat);
+export default connect(mapStateToProps, {fetchCats, createCat, removeCat})(NewCat);
