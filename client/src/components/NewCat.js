@@ -2,23 +2,14 @@ import React from 'react';
 import Header from './Header';
 import axios from 'axios';
 import config from '../config';
+import { fetchCats } from '../redux/actions/catActions';
+import { connect } from 'react-redux';
 
 
 class NewCat extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      cats: []
-    }
-  }
 
   componentWillMount(){
-    axios.get(`${config.host}/cats`).then(res => {
-      console.log('componentWillMount', res.data.cats);
-      this.setState({
-        cats: res.data.cats
-      })
-    })
+    this.props.fetchCats();
   }
   _updateCatList(){
     axios.get(`${config.host}/cats`)
@@ -47,7 +38,7 @@ class NewCat extends React.Component {
      });
    }
   render(){
-    let catList = this.state.cats.map((item, i) => {
+    let catList = this.props.cats.map((item, i) => {
       return(
         <li key={i}>
           {item.name} -- {item._id}
@@ -57,7 +48,7 @@ class NewCat extends React.Component {
     return(
       <div>
         <ul>
-          {catList}
+          {catList.length == 0 ? '暂无分类': catList}
         </ul>
         <form onSubmit={this._handleSubmit.bind(this)}>
           <input ref='catName' type="text" />
@@ -68,4 +59,8 @@ class NewCat extends React.Component {
   }
 }
 
-export default NewCat;
+const mapStateToProps = (state) => ({
+  cats: state.cats
+});
+
+export default connect(mapStateToProps, {fetchCats})(NewCat);
