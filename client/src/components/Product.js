@@ -3,11 +3,9 @@ import axios from 'axios';
 import config from '../config';
 
 class Product extends React.Component {
-  constructor() {
-    super();
-    this.state={
-       cats: []
-    }
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   getCats() {
@@ -47,7 +45,7 @@ class Product extends React.Component {
     return (
         <div className="product">
           <span>新建商品</span>
-          <form onSubmit={this.handleSubmit.bind(this)}>
+          <form onSubmit={this.handleSubmit}>
             <p>
             name
             <input ref="name" type="text" />

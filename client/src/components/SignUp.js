@@ -6,6 +6,10 @@ import '../css/signup.css';
 
 
 class SignUp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -24,7 +28,7 @@ class SignUp extends React.Component {
   render(){
     return (
       <div className="signup">
-        <form onSubmit={this.handleSubmit.bind(this)}>
+        <form onSubmit={this.handleSubmit}>
           <p>
           <label>用户名</label>
           <input ref="username" type="text" />

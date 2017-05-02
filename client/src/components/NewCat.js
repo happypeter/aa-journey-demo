@@ -8,6 +8,10 @@ import '../css/new-cat.css';
 
 
 class NewCat extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
   componentWillMount(){
     this.props.fetchCats();
@@ -28,7 +32,7 @@ class NewCat extends React.Component {
       return(
         <li key={i}>
           {item.name}
-          <span onClick={this.handleDelete.bind(this, item._id)}>x</span>
+          <span onClick={() => this.handleDelete(item._id)}>x</span>
         </li>)
     })
     return(
@@ -38,7 +42,7 @@ class NewCat extends React.Component {
           <ul className="cat-list">
             {catList}
           </ul>
-          <form onSubmit={this.handleSubmit.bind(this)}>
+          <form onSubmit={this.handleSubmit}>
             <input ref="catName" type="text" />
             <input className="submit" type="submit" value="创建分类"/>
           </form>
