@@ -7,7 +7,7 @@ import '../css/signin.css';
 
 class SignIn extends React.Component {
 
-  _handleSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
     let _user = {
                 username: this.refs.username.value,
@@ -20,7 +20,7 @@ class SignIn extends React.Component {
   render(){
     return (
       <div className="signin">
-        <form onSubmit={this._handleSubmit.bind(this)}>
+        <form onSubmit={this.handleSubmit.bind(this)}>
           <p>
           <label>用户名</label>
           <input ref='username' type="text" />

@@ -13,14 +13,14 @@ class NewCat extends React.Component {
     this.props.fetchCats();
   }
 
-  _handleSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
     let catName = this.refs.catName.value;
     this.props.createCat(catName);
     this.refs.catName.value = '';
 
   }
-   _handleDelete(id){
+   handleDelete(id){
      this.props.removeCat(id);
    }
   render(){
@@ -28,7 +28,7 @@ class NewCat extends React.Component {
       return(
         <li key={i}>
           {item.name}
-          <span onClick={this._handleDelete.bind(this, item._id)}>x</span>
+          <span onClick={this.handleDelete.bind(this, item._id)}>x</span>
         </li>)
     })
     return(
@@ -38,7 +38,7 @@ class NewCat extends React.Component {
           <ul className="cat-list">
             { catList }
           </ul>
-          <form onSubmit={this._handleSubmit.bind(this)}>
+          <form onSubmit={this.handleSubmit.bind(this)}>
             <input ref='catName' type="text" />
             <input className="submit" type='submit' value="创建分类"/>
           </form>

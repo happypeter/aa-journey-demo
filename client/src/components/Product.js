@@ -10,7 +10,7 @@ class Product extends React.Component {
     }
   }
 
-  _getCats() {
+  getCats() {
     axios.get(`${config.host}/cats`)
       .then((res)=>{
         console.log(res.data.cats);
@@ -20,9 +20,9 @@ class Product extends React.Component {
   }
 
   componentWillMount(){
-    this._getCats();
+    this.getCats();
   }
-  _handleSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
     console.log(this.refs.catId.value);
     let product = {
@@ -47,7 +47,7 @@ class Product extends React.Component {
     return (
         <div className="product">
           <span>新建商品</span>
-          <form onSubmit={this._handleSubmit.bind(this)}>
+          <form onSubmit={this.handleSubmit.bind(this)}>
             <p>
             name
             <input ref='name' type="text" />
