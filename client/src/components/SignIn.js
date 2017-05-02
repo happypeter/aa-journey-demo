@@ -23,14 +23,14 @@ class SignIn extends React.Component {
         <form onSubmit={this.handleSubmit.bind(this)}>
           <p>
           <label>用户名</label>
-          <input ref='username' type="text" />
+          <input ref="username" type="text" />
           </p>
           <p>
           <label>密码</label>
-          <input ref='password' type="password" />
+          <input ref="password" type="password" />
           </p>
           <p>
-            <input className="submit button" type='submit' value="登录"/>
+            <input className="submit button" type="submit" value="登录"/>
           </p>
         </form>
       </div>

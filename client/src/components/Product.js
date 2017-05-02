@@ -50,19 +50,19 @@ class Product extends React.Component {
           <form onSubmit={this.handleSubmit.bind(this)}>
             <p>
             name
-            <input ref='name' type="text" />
+            <input ref="name" type="text" />
             </p>
             <p>
             summery
-            <input ref='summary' type="text" />
+            <input ref="summary" type="text" />
             </p>
             <p>
             price:
-            <input ref='price' type="text" />
+            <input ref="price" type="text" />
             </p>
             <p>
             poster:
-            <input ref='poster' type="text" />
+            <input ref="poster" type="text" />
             </p>
             <p>
             <select name="catId" ref="catId">
@@ -70,7 +70,7 @@ class Product extends React.Component {
             </select>
             </p>
             <p>
-              <input type='submit' />
+              <input type="submit" />
             </p>
           </form>
         </div>

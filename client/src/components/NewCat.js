@@ -39,8 +39,8 @@ class NewCat extends React.Component {
             { catList }
           </ul>
           <form onSubmit={this.handleSubmit.bind(this)}>
-            <input ref='catName' type="text" />
-            <input className="submit" type='submit' value="创建分类"/>
+            <input ref="catName" type="text" />
+            <input className="submit" type="submit" value="创建分类"/>
           </form>
         </div>
       </div>
