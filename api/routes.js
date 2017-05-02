@@ -1,5 +1,5 @@
 let Cat = require('./controllers/cat');
-let Product = require('./controllers/product');
+let Course = require('./controllers/course');
 let User = require('./controllers/user');
 
 module.exports = function (app) {
@@ -7,10 +7,11 @@ module.exports = function (app) {
   app.get('/cats',Cat.list)
   app.delete('/cat',Cat.del)
 
-  //  product
-  app.post('/product/new',Product.new)
-  app.get('/product/detail/:id',Product.detail)
-  app.delete('/product/delete/:id',Product.del)
+  //  course
+  app.post('/course/new',Course.new)
+  app.get('/course/detail/:id',Course.detail)
+  app.get('/courses', Course.findAll)
+  app.delete('/course/delete/:id',Course.del)
 
   app.post('/user/signup', User.signup)
   app.post('/user/signin', User.signin)

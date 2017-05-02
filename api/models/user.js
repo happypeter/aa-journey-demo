@@ -31,7 +31,6 @@ UserSchema.pre('save',function (next) {
 // user 的实例方法
 UserSchema.methods = {
   comparePassword: function (_password, cb) {
-    // console.log(_password);
     console.log(this.password);
     bcrypt.compare(_password, this.password, function (err, isMatch) {
       if (err) return cb(err);

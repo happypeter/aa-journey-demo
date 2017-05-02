@@ -27,7 +27,6 @@ exports.list = function (req, res) {
 
 // del?id=id
 exports.del = function (req,res) {
-  // console.log(req.query);
   var id = req.query.id;
   if (id) {
     Cat.remove({_id: id}, function (err,category) {

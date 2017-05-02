@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.Types.ObjectId;
 
-var ProductSchema = new Schema({
+var CourseSchema = new Schema({
   name: String,
   summary: String,
   price: Number,
@@ -13,4 +13,4 @@ var ProductSchema = new Schema({
     ref: 'Cat'
   },
 })
-module.exports = mongoose.model('Product',ProductSchema);
+module.exports = mongoose.model('Course',CourseSchema);

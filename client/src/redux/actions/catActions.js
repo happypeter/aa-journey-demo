@@ -13,7 +13,6 @@ export function createCat(name) {
   return dispatch => {
     axios.post(`${config.host}/cat`, { name })
          .then((res) => {
-           console.log(res);
            dispatch({type: 'ADD_CAT', _id: res.data.category._id, name: name})
          })
   }
@@ -21,7 +20,6 @@ export function createCat(name) {
 export function removeCat(id) {
   return dispatch => {
     axios.delete(`${config.host}/cat?id=${id}`).then(res => {
-      console.log(res);
       dispatch({type: 'DEL_CAT', id})
     })
   }
