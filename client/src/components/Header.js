@@ -29,7 +29,7 @@ class Header extends React.Component {
       <div className="header">
         <div className="container">
           <Link to='/'>首页</Link>
-          { this.props.currentUser.length != 0 ? LogoutLink : LoginLink }
+          {this.props.currentUser.length != 0 ? LogoutLink : LoginLink}
         </div>
       </div>
     )

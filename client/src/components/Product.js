@@ -66,7 +66,7 @@ class Product extends React.Component {
             </p>
             <p>
             <select name="catId" ref="catId">
-              { optionList }
+              {optionList}
             </select>
             </p>
             <p>

@@ -36,7 +36,7 @@ class NewCat extends React.Component {
         <h1 className="title-dark-bg">新建分类</h1>
         <div className="container">
           <ul className="cat-list">
-            { catList }
+            {catList}
           </ul>
           <form onSubmit={this.handleSubmit.bind(this)}>
             <input ref="catName" type="text" />
