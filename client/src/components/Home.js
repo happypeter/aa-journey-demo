@@ -18,13 +18,13 @@ class Home extends React.Component {
     this.props.addCourseToCart(id);
   }
   render(){
-    console.log(this.props.courses)
+
     let courseList = this.props.courses.map(item => (
       <li className='course' key={Math.random()}>
          <div className='card'>
            <img src={item.poster} />
            <p className='title'>{item.name}</p>
-           <div className='buy' onClick={this.handleClick.bind(this, item._id)}>购买</div>
+           <button disabled={this.props.cart.includes(item._id)} className={this.props.cart.includes(item._id) ? 'buy disabled': 'buy'} onClick={this.handleClick.bind(this, item._id)}>购买</button>
          </div>
       </li>
     ))
@@ -41,7 +41,8 @@ class Home extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  courses: state.courses
+  courses: state.courses,
+  cart: state.cart,
 })
 
 export default connect(mapStateToProps, {loadCourses, addCourseToCart})(Home);
