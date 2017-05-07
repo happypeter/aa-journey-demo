@@ -18,7 +18,6 @@ class Home extends React.Component {
     this.props.addCourseToCart(id);
   }
   render(){
-
     let courseList = this.props.courses.map(item => (
       <li className='course' key={Math.random()}>
          <div className='card'>

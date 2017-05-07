@@ -8,6 +8,7 @@ import NewCourse from './components/NewCourse.js'
 import SignIn from './components/SignIn.js'
 import SignUp from './components/SignUp.js'
 import Profile from './components/Profile.js'
+import Order from './components/Order.js'
 
 export default function () {
   return(
@@ -19,6 +20,7 @@ export default function () {
         <Route path='signin' component={SignIn} />
         <Route path='signup' component={SignUp} />
         <Route path='profile' component={Profile} />
+        <Route path='order' component={Order} />
       </Route>
     </Router>
   )
