@@ -22,5 +22,6 @@ module.exports = function (app) {
   app.get('/user/:userId', User.getById)
 
   // order
+  app.get('/orders', Order.list)
   app.post('/order/new', Order.add)
 }
